@@ -1,31 +1,30 @@
 Rails.application.routes.draw do
-  
-   root to:"public/homes#top"
-   get '/about'=>'public/homes#about',as: 'about'
-   resources:items,only:[:index,:show]
-   
-   resources:cart_items,only:[:create,:index,:update,:destroy]
-   delete '/cart_items/destroy_all'=>'public/cart_items#destroy_all',as: 'destroy_all'
-   
-   resources:orders,only:[:create,:new,:index,:show]
-   post '/orders/confirm'=>'public/orders#confirm',as: 'confirm'
-   get '/orders/complete'=>'public/orders#complete',as: 'complete'
-   
-   
-   resources:addresses,only:[:index,:edit,:create,:update,:destroy]
-   
-  
-   get '/customers/my_page'=>'public/customers#show',as: 'my_page'
-   get '/customers/information/edit'=>'public/customers#edit',as: 'information_edit'
-   patch '/customers/information'=>'public/customers#update',as: 'information'
-   get '/customers/unsubscribe'=>'public/customers#unsubscribe',as: 'unsubscribe'
-   patch '/customers/withdraw'=>'public/customers#withdraw',as: 'withdraw'
-   
-   
-  
+    
+  scope module: :public do
+       root to:"homes#top"
+       get '/about'=>'homes#about',as: 'about'
+       resources:items,only:[:index,:show]
+       
+       resources:cart_items,only:[:create,:index,:update,:destroy]
+       delete '/cart_items/destroy_all'=>'cart_items#destroy_all',as: 'destroy_all'
+       
+       resources:orders,only:[:create,:new,:index,:show]
+       post '/orders/confirm'=>'orders#confirm',as: 'confirm'
+       get '/orders/complete'=>'orders#complete',as: 'complete'
+       
+       
+       resources:addresses,only:[:index,:edit,:create,:update,:destroy]
+       
+      
+       get '/customers/my_page'=>'customers#show',as: 'my_page'
+       get '/customers/information/edit'=>'customers#edit',as: 'information_edit'
+       patch '/customers/information'=>'customers#update',as: 'information'
+       get '/customers/unsubscribe'=>'customers#unsubscribe',as: 'unsubscribe'
+       patch '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
+  end
   
   namespace :admin do
-    get '/admin'=>'admin/homes#top', as: 'admin_top'
+    get '/'=>'homes#top', as: 'top'
     resources:customers,only:[:index,:show,:edit,:update]
     resources:genres,only:[:create,:index,:edit,:update]
     resources:items,only:[:new,:create,:index,:show,:edit,:update]
