@@ -55,4 +55,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# rails s起動を正常にする為
+gem "net-smtp"
+
 gem 'devise'
