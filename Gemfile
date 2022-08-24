@@ -58,4 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # rails s起動を正常にする為
 gem "net-smtp"
 
+# ページネーションの為必要
+gem 'kaminari','~> 1.2.1'
+
 gem 'devise'
