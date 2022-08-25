@@ -1,9 +1,31 @@
-<h1>商品詳細</h1>
-<% @items.each do |item| %>
-<%=f.label :商品名 %>
-<%=f.label :商品説明 %>
-<%=f.label :ジャンル %>
-<%=f.label :税込価格（税抜価格） %>
-<%=f.label :販売ステータス %>
-<%=f.submit "編集する" %>
-<% end %>
+<h4>商品詳細</h4>
+
+<table>
+<%=image_tag @item.get_image(100,100) %>
+  <tr>
+    <td>商品名</td> 
+    <td><%=@item.name %></td>
+  </tr>
+  
+  <tr>
+    <td>商品説明</td>
+    <td><%=@item.introduction %></td>
+  </tr>
+  
+  <tr>
+    <td>ジャンル</td>
+    <td><%=@item.genre.name %></td>
+  </tr>
+  
+  <tr>
+    <td>税込価格</br>（税抜価格）</td>
+    <td><%= @item.add_tax_price.to_s(:dalimited) %> (<%=@item.price %>)円</td>
+    </tr>
+  
+  <tr>
+    <td>販売ステータス</td>
+    <td><%= @item.is_active == true ? "販売中":"販売停止中" %> </td>
+  </tr>      
+</table>
+
+<%=link_to edit_admin_item_path(@item.id) do %>編集する<% end %>
