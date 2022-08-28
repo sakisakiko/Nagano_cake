@@ -1,1 +1,9 @@
-<h1>商品一覧ページ</h1>
+<h2>商品一覧<span>(全<%=@items.count%>件)</span></h2>
+
+
+<% @items.each do |item| %>
+  <%=link_to item_path(item.id) do %><%=image_tag item.get_image(200,350) %><% end %>
+  <%=link_to item_path(item.id) do %><%=item.name %><% end %>
+  <span>¥</span><%= item.add_tax_price.to_s(:dalimited) %>
+<% end %>
+<%= paginate @items %>
