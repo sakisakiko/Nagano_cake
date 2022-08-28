@@ -18,12 +18,12 @@
   
   <tr>
     <td>支払方法</td>
-    <td><%#= @order.payment_method  %> </td>
+    <td><%= @order.payment_methods_i18n%> </td>
   </tr>
   
   <tr>
     <td>注文ステータス</td>
-    <td></td>
+    <td><%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
   </tr>
   
    
