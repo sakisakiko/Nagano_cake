@@ -64,4 +64,7 @@ gem 'kaminari','~> 1.2.1'
 # enumの導入のため
 gem "enum_help"
 
+# デバックツール
+gem 'pry-byebug', group: :development
+
 gem 'devise'

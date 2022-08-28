@@ -2,8 +2,15 @@
 <%=@item.name %></br>
 <%=@item.introduction %></br>
 <span>¥</span><%= @item.add_tax_price.to_s(:dalimited) %>(税込)
-<%=form_with model: @item do |f| %>
- <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
- <%= f.hidden_field :title %>
+
+<%=form_with model: @cart_item,url: cart_items_path do |f| %>
+
+  <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
+
+  <%= f.hidden_field :item_id, :value => @item.id %>
+
+  <%=f.submit "カートに入れる" %>
+
 <% end %>
-<%=link_to "カートに入れる",cart_items_path  %>
+
+
