@@ -7,11 +7,11 @@ class Item < ApplicationRecord
   #販売ステータスを確認するバリデーション
  validates :is_active, inclusion: { in: [true, false] }
  
-  # 消費税を加えた商品価格
-  def add_tax_price
-    (self.price * 1.10).round
-  end
-  
+   # 消費税を加えた商品価格
+    def with_tax_price
+     (self.price * 1.10).floor
+    end
+
 
   
     def  get_image(width,height)

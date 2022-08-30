@@ -4,6 +4,6 @@
 <% @items.each do |item| %>
   <%=link_to item_path(item.id) do %><%=image_tag item.get_image(200,350) %><% end %>
   <%=link_to item_path(item.id) do %><%=item.name %><% end %>
-  <span>¥</span><%= item.add_tax_price.to_s(:dalimited) %>
+  <span>¥</span><%= item.with_tax_price.to_s(:dalimited) %>
 <% end %>
 <%= paginate @items %>
