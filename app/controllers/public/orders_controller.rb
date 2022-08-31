@@ -1,23 +1,23 @@
 class Public::OrdersController < ApplicationController
-  
+
   def new
     @order=Order.new
   end
-  
+
   def confirm
     @order=Order.new(order_params)
     @order.save
-    redeirect to comfirm_path
+    redirect_to confirm_path
   end
-  
+
   def create
     @order=Order.new(order_params)
     @order.save
     redeirect to orders_path
   end
-  
-  
-  
+
+
+
   def index
   end
 
@@ -31,6 +31,6 @@ end
   end
 
 
- 
+
 
 
