@@ -55,7 +55,8 @@
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
-
-<p>既に登録済みの方</p>
-<p><%=link_to new_customer_session_path do %>こちら<% end %>からログインして下さい</p>
+<%#= render "public/shared/links" %>
+<div class="link_sign_in">
+  <p>既に登録済みの方</br>
+  <%=link_to"こちら", new_customer_session_path %>からログインして下さい</p>
+</div>
