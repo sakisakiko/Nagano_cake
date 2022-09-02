@@ -19,17 +19,12 @@ class Public::OrdersController < ApplicationController
     end
 
   end
-
-
-
-
-
-
-
+  
+  def complete 
+  end
+  
   def create
   end
-
-
 
 
   def index
