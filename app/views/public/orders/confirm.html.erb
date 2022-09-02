@@ -1,5 +1,4 @@
 <h1>注文情報確認画面</h1>
-<%=form_with model: @order,url: orders_path,method: :post do |f| %>
 <table>
   <thead>
     <tr>
@@ -8,14 +7,14 @@
       <th>数量</th>
       <th>小計</th>
     </tr>
-    <% @cart_items.each |cart_item| do %>
+    <%# @cart_items.each do |cart_item| %>
     <tr>
-      <td>内容</td>
+      <td><%#=cart_item.item.name %></td>
       <td>内容</td>
       <td>内容</td>
       <td>内容</td>
     </tr>
-    <% end %>
+    <%# end %>
   </thead>
 </table>
 
@@ -41,10 +40,9 @@
 
 
 
-<% @orders.each |order| do %>
+<% @orders.each do |order| %>
 <p>支払い方法</p><%=order.payment_method %></br>
 <p>お届け先</p><%=order.address %>
 <% end %>
 
-<% end %>
 
