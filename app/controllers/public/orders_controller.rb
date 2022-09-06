@@ -7,20 +7,15 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order=Order.new(order_params)
-    @orders=Order.all
-    @order=Order.find(params[:order][:select_address])
-    if @order.select_address== "1"
-    @order.postal_code = current_customer.postal_code
-    @order.address = current_customer.address
-    @order.name = current_customer.last_name + current_customer.first_name
-    else
-     @address = Address.find(params[:order][:address_id])
-    end
+    @orders=current_customer.orders
+    @cart_items=current_customer.cart_items
+    @total_price=0
+   
   end
-  
-  def complete 
+
+  def complete
   end
-  
+
   def create
   end
 
@@ -33,7 +28,7 @@ class Public::OrdersController < ApplicationController
 
  private
   def order_params
-   params.require(:order).permit(:name,:postal_code,:address,:payment_method)
+   params.require(:order).permit(:name,:postal_code,:address,:payment_method,:shipping_cost,:payment_price)
   end
 
 

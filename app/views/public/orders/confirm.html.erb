@@ -7,15 +7,32 @@
       <th>数量</th>
       <th>小計</th>
     </tr>
-    <% @orders.each do |order| %>
-    <tr>
-      <td><%=order.itemi.name %></td>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-    <%# end %>
   </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%=image_tag cart_item.item.get_image(100,200) %><%=cart_item.item.name %></td>
+      <td><%=cart_item.item.with_tax_price.to_s(:dalimited) %></td>
+      <td><%=cart_item.amount %></td>
+      <td><%=cart_item.subtotal %></td>
+    </tr>
+      <% @total_price +=  cart_item.subtotal %>
+    <% end %>
+  </tbody>
+  <tbody>
+    <tr>
+      <th>送料</th>
+      <tr><%=@order.shipping_cost %></tr>
+    </tr>
+    <tr>
+      <th>商品合計</th>
+      <tr><%=@total_price %></tr>
+    </tr>
+    <tr>
+      <th>請求金額</th>
+      <tr></tr>
+    </tr>
+  </tbody>
 </table>
 
 <table>
