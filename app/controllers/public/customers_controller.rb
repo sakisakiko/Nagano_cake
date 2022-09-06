@@ -19,6 +19,4 @@ class Public::CustomersController < ApplicationController
    :last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number)
   end
 
-
-
 end

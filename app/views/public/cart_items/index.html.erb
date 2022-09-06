@@ -37,7 +37,8 @@
 <th>合計金額</th>
 <% @cart_items.each do |cart_item| %>
 <td><% @total_price +=  cart_item.subtotal %></td>
-<% end %></br>
+<% end %>
+<%=@total_price %></br>
 
 <%=link_to "買い物を続ける", root_path%>
 <%=link_to "情報入力画面に進む",new_order_path %>
