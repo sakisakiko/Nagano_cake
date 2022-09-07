@@ -16,50 +16,28 @@
       <td><%=cart_item.amount %></td>
       <td><%=cart_item.subtotal %></td>
     </tr>
-      <% @total_price +=  cart_item.subtotal %>
+      <% @total_price +=  cart_item.subtotal  %>
     <% end %>
   </tbody>
   <tbody>
     <tr>
       <th>送料</th>
-      <tr><%=@order.shipping_cost %></tr>
+      <td><%=@order.shipping_cost %></td>
     </tr>
     <tr>
       <th>商品合計</th>
-      <tr><%=@total_price %></tr>
+      <td><%=@total_price %></td>
     </tr>
     <tr>
       <th>請求金額</th>
-      <tr></tr>
+      <td><%=@order.shipping_cost+@total_price %></td>
     </tr>
   </tbody>
 </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>送料</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>商品合計</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>請求金額</th>
-      <td></td>
-    </tr>
-  </thead>
-</table>
-
-
-
-
-
 
 <% @orders.each do |order| %>
-<p>支払い方法</p><%=order.payment_method %></br>
-<p>お届け先</p><%=order.address %>
+<p>支払方法</p><%=Order.payment_methods_i18n%>
 <% end %>
 
 

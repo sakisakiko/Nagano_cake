@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
  Admin.create(email: 'kaede@dmm.com', password:'123456')
- Order.confirm(shipping_cost: 800)
+
 

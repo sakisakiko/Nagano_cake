@@ -9,8 +9,9 @@ class Public::OrdersController < ApplicationController
     @order=Order.new(order_params)
     @orders=current_customer.orders
     @cart_items=current_customer.cart_items
+    @order.shipping_cost= 800
     @total_price=0
-   
+
   end
 
   def complete
