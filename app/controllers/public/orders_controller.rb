@@ -30,12 +30,14 @@ class Public::OrdersController < ApplicationController
     @order=Order.new(order_params)
     @order.customer=current_customer
     @order.save
+
+    @order_deital=Order_deital.new
     @cart_items=current_customer.cart_items
     @cart_items.destroy_all
     redirect_to complete_path
   end
-  
-  
+
+
   def complete
   end
 
@@ -48,7 +50,7 @@ class Public::OrdersController < ApplicationController
 
  private
   def order_params
-   params.require(:order).permit(:name,:postal_code,:address,:payment_method,:shipping_cost,:payment_price)
+   params.require(:order).permit(:name,:postal_code,:address,:payment_method,:payment_price)
   end
 
 

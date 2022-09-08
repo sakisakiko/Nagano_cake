@@ -48,10 +48,10 @@
 </table>
 
 <%=form_with model: @order_deital,url: orders_path do |f| %>
-  <%= f.hidden_field :cart_item_id, :value => @cart_item.id %>
-  <%= f.hidden_field :amount, :value => @cart_item.amount %>
-  <%= f.hidden_field :price, :value => @cart_item.item.with_tax_price.to_s(:dalimited) %>
-  <%=f.submit "注文を確定する" %>
+<%= f.hidden_field :cart_item_id, :value => @cart_items.id %>
+<%= f.hidden_field :amount, :value => @cart_items.amount %>
+<%= f.hidden_field :price, :value => @cart_items.item.with_tax_price.to_s(:dalimited) %>
+<%=f.submit "注文を確定する" %>
 <% end %>
 
 
