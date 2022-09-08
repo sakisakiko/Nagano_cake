@@ -16,7 +16,7 @@
       <td><%=cart_item.amount %></td>
       <td><%=cart_item.subtotal %></td>
     </tr>
-      <% @order.payment_price +=  cart_item.subtotal  %>
+    <% @order.payment_price +=  cart_item.subtotal  %>
     <% end %>
   </tbody>
   <tbody>
@@ -47,11 +47,13 @@
   </tr>
 </table>
 
-<%=form_with model: @order_deital,url: orders_path do |f| %>
-<%= f.hidden_field :cart_item_id, :value => @cart_items.id %>
-<%= f.hidden_field :amount, :value => @cart_items.amount %>
-<%= f.hidden_field :price, :value => @cart_items.item.with_tax_price.to_s(:dalimited) %>
-<%=f.submit "注文を確定する" %>
+<%=form_with model: @order,url: orders_path do |f| %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :payment_price %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :postal_code %>
+  <%= f.hidden_field :address %>
+  <%=f.submit "注文を確定する" %>
 <% end %>
 
 

@@ -29,11 +29,18 @@ class Public::OrdersController < ApplicationController
   def create
     @order=Order.new(order_params)
     @order.customer=current_customer
+    @order.shipping_cost= 800
     @order.save
 
-    @order_deital=Order_deital.new
-    @cart_items=current_customer.cart_items
-    @cart_items.destroy_all
+    @cart_items=current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      @order_detail=OrderDetail.new
+      @order_detail.price=cart_item.item.price * 1.10
+      @order_detail.amount=cart_item.amount
+
+      @order_detail.save
+      @cart_items.destroy_all
+    end
     redirect_to complete_path
   end
 
@@ -50,7 +57,7 @@ class Public::OrdersController < ApplicationController
 
  private
   def order_params
-   params.require(:order).permit(:name,:postal_code,:address,:payment_method,:payment_price)
+   params.require(:order).permit(:name,:postal_code,:address,:shipping_cost,:payment_method,:payment_price)
   end
 
 
