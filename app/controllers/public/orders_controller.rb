@@ -56,12 +56,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order=current_customer.orders.find(params[:id])
+    #@order_detail=current_customer.orders.find(params[:id])
+    #@order_details.order_id=@order.id
+
+    @order.shipping_cost= 800
+   # @total_price=@order_detail.price- @order.shipping_cost
   end
 
  private
   def order_params
    params.require(:order).permit(:name,:postal_code,:address,:shipping_cost,:payment_method,:payment_price)
   end
+
+  def order_detail_params
+   params.require(:order_detail).permit(:price,:amount,:status,:order_id,:item_id)
+  end
+
 
 
 end
