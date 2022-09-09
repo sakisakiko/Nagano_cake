@@ -16,7 +16,7 @@
       <td><%=cart_item.amount %></td>
       <td><%=cart_item.subtotal %></td>
     </tr>
-    <% @order.payment_price +=  cart_item.subtotal  %>
+    <% @total_price +=  cart_item.subtotal  %>
     <% end %>
   </tbody>
   <tbody>
@@ -26,11 +26,12 @@
     </tr>
     <tr>
       <th>商品合計</th>
-      <td><%=@order.payment_price  %></td>
+      <td><%=@total_price %></td>
     </tr>
     <tr>
       <th>請求金額</th>
-      <td><%=@order.payment_price  + @order.shipping_cost %></td>
+      <td><% @order.payment_price=@total_price + @order.shipping_cost %>
+      <%=@order.payment_price %></td>
     </tr>
   </tbody>
 </table>

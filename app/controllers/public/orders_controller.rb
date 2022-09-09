@@ -10,7 +10,8 @@ class Public::OrdersController < ApplicationController
     @orders=current_customer.orders
     @cart_items=current_customer.cart_items
     @order.shipping_cost= 800
-    @order.payment_price=0
+    @total_price=0
+
 
     if params[:order][:select_address] == "1"   # 自身の住所のとき
       @order.postal_code = current_customer.postal_code
@@ -50,6 +51,8 @@ class Public::OrdersController < ApplicationController
 
 
   def index
+     @orders=current_customer.orders.all
+     @order_details=current_customer.orders.all
   end
 
   def show
