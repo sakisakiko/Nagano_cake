@@ -5,7 +5,7 @@
 
 <h1>新着商品</h1>
 <% @items.limit(4).each do |item| %>
-<%=image_tag item.get_image(150,350) %></br>
-<p><%=item.name %></br>¥<%=item.price %></p>
+<%=link_to item_path(item.id) do %><%=image_tag item.get_image(150,350) %><% end %></br>
+<p><%=link_to item_path(item.id) do %><%=item.name %><% end %></br>¥<%=item.price %></p>
 <% end %>
 <%=link_to "全ての商品を見る>", items_path %>
