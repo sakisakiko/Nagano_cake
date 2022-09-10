@@ -36,12 +36,14 @@ class Public::OrdersController < ApplicationController
     @cart_items=current_customer.cart_items.all
     @cart_items.each do |cart_item|
       @order_detail=OrderDetail.new
+      @order_detail.item_id=cart_item.item_id
       @order_detail.price=cart_item.item.price * 1.10
       @order_detail.amount=cart_item.amount
+      @order_detail.order_id=@order.id
 
       @order_detail.save
-      @cart_items.destroy_all
     end
+    @cart_items.destroy_all
     redirect_to complete_path
   end
 
@@ -52,27 +54,26 @@ class Public::OrdersController < ApplicationController
 
   def index
      @orders=current_customer.orders.all
-     @order_details=current_customer.orders.all
-  end
+ end
 
   def show
     @order=current_customer.orders.find(params[:id])
-    #@order_detail=current_customer.orders.find(params[:id])
-    #@order_details.order_id=@order.id
+    #@order_details=current_customer.orders_deitals
 
     @order.shipping_cost= 800
-   # @total_price=@order_detail.price- @order.shipping_cost
+  end
+
+
+  def destroy
+    @order=current_customer.orders.find(params[:id])
+    @order.destroy
+    redirect_to orders_path
   end
 
  private
   def order_params
    params.require(:order).permit(:name,:postal_code,:address,:shipping_cost,:payment_method,:payment_price)
   end
-
-  def order_detail_params
-   params.require(:order_detail).permit(:price,:amount,:status,:order_id,:item_id)
-  end
-
 
 
 end
