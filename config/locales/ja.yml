@@ -10,9 +10,9 @@ ja:
         making: "製作中"
         unshipped: "発送準備中"
         shipped: "発送完了"
-        
+
  ja:
   time:
     formats:
       default:"%Y/%m/%d"
-      include_time: "%Y/%m/%d %H:%M:%S"    
+      include_time: "%Y/%m/%d %H:%M:%S"
