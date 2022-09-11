@@ -2,7 +2,6 @@ class Admin::OrdersController < ApplicationController
   def show
     @order=Order.find(params[:id])
     @order.shipping_cost=800
-    #@order_details=OrderDetail.find_by(order_id)
   end
   
   def update
