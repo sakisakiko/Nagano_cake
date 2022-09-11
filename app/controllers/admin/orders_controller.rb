@@ -1,7 +1,14 @@
 class Admin::OrdersController < ApplicationController
   def show
-    @order=Order.find(patams[:id])
-    @order_details=OrderDetail.find_by(order_id)
+    @order=Order.find(params[:id])
+    @order.shipping_cost=800
+    #@order_details=OrderDetail.find_by(order_id)
+  end
+  
+  def update
+    @order=Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to admin_order_path(@order.id)
   end
   
   
