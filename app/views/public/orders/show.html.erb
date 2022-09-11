@@ -18,6 +18,25 @@
   </tr>
 </table>
 
+<p>請求情報</p>
+<table>
+  <tr>
+    <th>商品合計</th>
+    <% @order.order_details.each do |order_detail| %>
+    <% @total_price += order_detail.subtotal %>
+    <% end %>
+    <td><%=@total_price %></td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td><%=@order.shipping_cost %></td>
+  </tr>
+  <tr>
+    <th>ご請求額</th>
+    <td><%=@order.payment_price %></td>
+  </tr>
+</table>
+
 
 
 <p>注文内容</p>
@@ -26,6 +45,7 @@
     <tr>
       <th>商品</th>
       <th>単価（税込）</th>
+      <th>個数</th>
       <th>小計</th>
     </tr>
   </thead>

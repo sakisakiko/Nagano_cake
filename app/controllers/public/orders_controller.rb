@@ -54,13 +54,13 @@ class Public::OrdersController < ApplicationController
 
   def index
      @orders=current_customer.orders.all
- end
+  end
 
   def show
     @order=current_customer.orders.find(params[:id])
     #@order_details=current_customer.orders_deitals
-
     @order.shipping_cost= 800
+    @total_price=0
   end
 
 
