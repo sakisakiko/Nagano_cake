@@ -11,6 +11,7 @@
   </head>
   <header>
     <% if customer_signed_in? %>
+    <P>ようこそ、<%=current_customer.last_name %>さん！</P>
       <ul>
         <li><%=link_to "マイページ",my_page_path %></li>
         <li><%=link_to "商品一覧",items_path %></li>
