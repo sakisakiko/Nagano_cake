@@ -9,36 +9,50 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-    <% if customer_signed_in? %>
-    <P>ようこそ、<%=current_customer.last_name %>さん！</P>
-      <ul>
-        <li><%=link_to "マイページ",my_page_path %></li>
-        <li><%=link_to "商品一覧",items_path %></li>
-        <li><%=link_to "カート",cart_items_path %></li>
-        <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
+
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+<div class= "container">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<% if customer_signed_in? %>
+<a class="navbar-brand" href= "/">LOGO</a><!--ロゴがはいります-->
+<P class="navbar-brand text-light">ようこそ、<%=current_customer.last_name %>さん！</P>
+<div class="collapse navbar-collapse " id="navbarNavDropdown">
+<ul class="navbar-nav ml-auto ">
+        <li><%=link_to "マイページ",my_page_path,class: "btn btn-outline-light"%></li>
+        <li><%=link_to "商品一覧",items_path,class: "btn btn-outline-light" %></li>
+        <li><%=link_to "カート",cart_items_path,class: "btn btn-outline-light" %></li>
+        <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete,class: "btn btn-outline-light" %></li>
       </ul>
     <% elsif admin_signed_in? %>
-      <ul>
-        <li><%=link_to "商品一覧",admin_items_path  %></li>
-        <li><%=link_to "会員一覧",admin_customers_path  %></li>
-        <li><%=link_to "注文履歴一覧",admin_top_path  %></li>
-        <li><%=link_to "ジャンル一覧",admin_genres_path  %></li>
-        <li><%=link_to "ログアウト",destroy_admin_session_path,method: :delete  %></li>
+<ul class="navbar-nav ml-auto">
+        <li><%=link_to "商品一覧",admin_items_path,class: "btn btn-outline-light"  %></li>
+        <li><%=link_to "会員一覧",admin_customers_path,class: "btn btn-outline-light"  %></li>
+        <li><%=link_to "注文履歴一覧",admin_top_path,class: "btn btn-outline-light"  %></li>
+        <li><%=link_to "ジャンル一覧",admin_genres_path,class: "btn btn-outline-light"  %></li>
+        <li><%=link_to "ログアウト",destroy_admin_session_path,method: :delete,class: "btn btn-outline-light"  %></li>
       </ul>
     <% else %>
-       <ul>
-        <li><%=link_to "About",about_path  %></li>
-        <li><%=link_to "商品一覧",items_path  %></li>
-        <li><%=link_to "新規登録",new_customer_registration_path %></li>
-        <li><%=link_to "ログイン",new_customer_session_path %></li>
+<ul class="navbar-nav ml-auto">
+        <li><%=link_to "About",about_path,class: "btn btn-outline-light"  %></li>
+        <li><%=link_to "商品一覧",items_path,class: "btn btn-outline-light" %></li>
+        <li><%=link_to "新規登録",new_customer_registration_path,class: "btn btn-outline-light" %></li>
+        <li><%=link_to "ログイン",new_customer_session_path,class: "btn btn-outline-light" %></li>
       </ul>
     <% end %>
-  </header>
+
+</header>
+
+
+
 
   <body>
     <%= yield %>
   </body>
 
-  <footer></footer>
+  <footer class="card text-white bg-danger" ></footer>
 </html>
