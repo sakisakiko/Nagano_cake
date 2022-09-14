@@ -1,31 +1,35 @@
 <div class="container">
-<div class=row>
+<div class="row">
+<div class="mx-auto col-lg-10">
 
-
-<div class=" col-11 col-sm-10  col-lg-8" >
-
-
-<div class="card" style="max-width: 700px;">
-  <img class="card-img  width="100%" height="400"" style="opacity:0.5;" src="/assets/eclair.jpg" alt="">
-  <div class="card-img-overlay ">
-    <p class=" d-flex align-items-center justify-content-center" style="height:400px;">
-      ようこそ、ながのCAKEへ！</br>
-      このサイトは、ケーキ販売のECサイトになります。</br>
-      会員でない方も商品の閲覧はできますが、</br>
-      購入には会員登録が必要になります
-    </p>
-  </div>
+<div class="card mx-auto" style="max-width: 700px;">
+<img class="card-img width="100%" height="300"" style="opacity:0.75;" src="/assets/eclair1.jpg" alt="">
+<div class="card-img-overlay">
+<div class="d-flex align-items-center justify-content-center" style="height:300px;">
+<p style="background-color:rgba(255,255,255,0.75);">
+ようこそ、ながのCAKEへ！</br>
+このサイトは、ケーキ販売のECサイトになります。</br>
+会員でない方も商品の閲覧はできますが、</br>
+購入には会員登録が必要になります
+</p>
 </div>
+</div>
+</div>
+
+
 
 
 <h1>新着商品</h1>
+<div class="d-flex flex-row ">
 <% @items.limit(4).each do |item| %>
-<%=link_to item_path(item.id) do %><%=image_tag item.get_image(150,350) %><% end %></br>
+<%=link_to item_path(item.id) do %><%=image_tag item.get_image(150,350) %><% end %>
 <p><%=link_to item_path(item.id) do %><%=item.name %><% end %></br>¥<%=item.price %></p>
 <% end %>
+</div>
+<div class="d-flex flex-row-reverse">
 <%=link_to "全ての商品を見る>", items_path %>
-
 </div>
 
+</div>
 </div>
 </div>
