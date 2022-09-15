@@ -1,26 +1,36 @@
+<div class="container mx-auto ">
+
+
+<div class="row mx-auto">
+<div class="col-lg-5 mx-auto">
 <h2>ログイン</h2>
+<p>会員の方はこちらからログイン</p>
+</div>
+</div>
 
-<%#= form_with model:@custmer,url: customer_session_path do |f| %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+  <div class="form-group row mx-auto">
+    <%= f.label :メールアドレス,class: "col-lg-2 ml-5"%>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "col-lg-5 form-control mx-auto" %>
   </div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="form-group row mx-auto ">
+    <%= f.label :パスワード, class: "col-lg-2 ml-5"%>
+    <%= f.password_field :password, autocomplete: "current-password",class: "col-lg-5 form-control mx-auto"%>
   </div>
-  
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+
+  <div class="form-group row mx-auto">
+    <%= f.submit "　ログイン　",class: "btn btn-primary mx-auto" %>
   </div>
 
 
 <% end %>
 
-<%#= render "public/shared/links" %>
 <div class="link_sign_up">
   <p>会員登録がお済みでない方</br>
   <%=link_to"こちら", new_customer_registration_path %>から新規登録を行ってください</p>
+</div>
+
+
 </div>
