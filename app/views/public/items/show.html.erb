@@ -1,7 +1,17 @@
+<div class="container">
+<div class="row mx-auto">
+
+<div class="col-lg-3">
 <%=image_tag @item.get_image(200,350) %>
-<%=@item.name %></br>
-<%=@item.introduction %></br>
-<span>¥</span><%= @item.with_tax_price.to_s(:dalimited) %>(税込)
+</div>
+
+<div class="col-lg-5">
+<h5 class="font-weight-bold mb-0"><%=@item.name%></h5></br>
+<p><%=@item.introduction%></p>
+<p>
+¥<span class="font-weight-bold " style="font-size:17px;" ><%= @item.with_tax_price.to_s(:dalimited) %></span>(税込)
+</p>
+
 
 <%=form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
 
@@ -9,8 +19,13 @@
 
   <%= f.hidden_field :item_id, :value => @item.id %>
 
-  <%=f.submit "カートに入れる" %>
+  <%=f.submit "カートに入れる",class: "btn btn-success ml-5 " %>
 
 <% end %>
+</div>
+
+
+</div>
+</div>
 
 
