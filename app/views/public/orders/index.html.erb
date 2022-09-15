@@ -1,5 +1,7 @@
-<h1>注文一覧画面</h1>
-<table>
+<div class="container">
+<h4 class="font-weight-bold">注文一覧画面</h4>
+<div class="row mx-auto">
+<table class="table table-bordered col-lg-11 mx-auto">
   <thead>
     <tr>
       <th>注文日</th>
@@ -18,9 +20,10 @@
       <td><% order.order_details.each do |order_detail| %><%=order_detail.item.name %></br><% end %></td><!--注文商品-->
       <td><%=order.payment_price %>円</td><!--支払金額-->
       <td><%=order.status_i18n %></td><!--☆注文ステータスの設定必要-->
-      <td><%=link_to "表示する",order_path(order.id) %></td>
-      <td><%#=link_to "削除する",order_path(order.id),method: :delete %></td><!--不要あとで削除-->
+      <td><%=link_to "表示する",order_path(order.id),class: "btn btn-primary" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
