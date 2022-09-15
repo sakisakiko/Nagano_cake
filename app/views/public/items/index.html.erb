@@ -1,9 +1,25 @@
-<h2>商品一覧<span>(全<%=@items.count%>件)</span></h2>
+<div class="container">
 
+<div="row mx-auto">
+<h2 class="col-7 font-weight-bold"style="margin-left:130px;">
+商品一覧<span>(全<%=@items.count%>件)</span>
+</h2>
+</div>
 
+<div class="col-7 d-flex flex-row flex-wrap mx-auto">
 <% @items.each do |item| %>
-  <%=link_to item_path(item.id) do %><%=image_tag item.get_image(200,350) %><% end %>
-  <%=link_to item_path(item.id) do %><%=item.name %><% end %>
-  <span>¥</span><%= item.with_tax_price.to_s(:dalimited) %>
+<div class="flex-column flex-wrap ">
+  <%=link_to item_path(item.id) do %><%=image_tag item.get_image(150,300),class: "mr-5"%><% end %>
+  <p><%=link_to item_path(item.id) do %><%=item.name %><% end %></p>
+  <p><span>¥</span><%= item.with_tax_price.to_s(:dalimited) %></p>
+</div>
 <% end %>
-<%= paginate @items %>
+</div>
+
+<div class="col-7 mx-auto">
+<%= paginate @items%>
+</div>
+
+
+</div>
+
