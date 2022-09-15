@@ -1,9 +1,17 @@
-<h2>ショッピングカート</h2>
-<%=link_to "カートを空にする",destroy_all_path,method: :delete %>
-<table>
+<div class="container">
+
+<div class="row mx-auto">
+<h4 class="font-weight-bold">ショッピングカート</h4>
+</div>
+
+<div class="text-right">
+<%=link_to "カートを空にする",destroy_all_path,method: :delete,class: "btn btn-danger mb-3" %>
+</div>
+
+
+<table class="table table-bordered ">
   <thead>
     <tr>
-      <th></th>
       <th>商品名</th>
       <th>単価（税込）</th>
       <th>数量</th>
@@ -14,32 +22,46 @@
   <tbody>
     <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%=image_tag cart_item.item.get_image(100,200) %></td>
-        <td><%=cart_item.item.name%></td>
+        <td><%=image_tag cart_item.item.get_image(70,150) %> <%=cart_item.item.name%></td>
         <td><%=cart_item.item.with_tax_price.to_s(:dalimited) %></td>
 
 
         <td>
           <%=form_with model: cart_item,url: cart_item_path(cart_item.id) do |f| %>
-           <%= f.select :amount, *[1..10] %>
-           <%=f.submit "変更" %>
+           <%= f.select :amount, *[1..10],class: %>
+           <%=f.submit "変更",class: "btn btn-success" %>
           <% end %>
         </td>
 
         <td><%=cart_item.subtotal %></td>
-        <td><%=link_to "削除する",cart_item_path(cart_item.id),method: :delete %></td>
+        <td><%=link_to "削除する",cart_item_path(cart_item.id),method: :delete,class: "btn btn-danger" %></td>
       </tr>
     <% end %>
     </tbody>
   <table>
 </table>
 
-<th>合計金額</th>
-<% @cart_items.each do |cart_item| %>
-<td><% @total_price +=  cart_item.subtotal %></td>
-<% end %>
-<%=@total_price %></br>
+<div class="row mx-auto ">
 
-<%=link_to "買い物を続ける", root_path%>
-<%=link_to "情報入力画面に進む",new_order_path %>
+<div class="text-left">
+<%=link_to "買い物を続ける", root_path,class: "btn btn-primary"%>
+</div>
+
+<table class="table table-bordered col-lg-4 ml-auto">
+<th>合計金額</th>
+<td><% @cart_items.each do |cart_item| %>
+<% @total_price +=  cart_item.subtotal %>
+<% end %>
+<%=@total_price %></br></td>
+</table>
+</div>
+
+<div class="row mx-auto">
+<%=link_to "情報入力画面に進む",new_order_path,class: "btn btn-success col-lg-3 mx-auto" %>
+</div>
+
+
+
+
+</div>
 
