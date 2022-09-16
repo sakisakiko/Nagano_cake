@@ -61,6 +61,7 @@ gem "net-smtp"
 # ページネーションの為必要
 gem 'kaminari','~> 1.2.1'
 
+
 # enumの導入のため
 gem "enum_help"
 
@@ -68,3 +69,4 @@ gem "enum_help"
 gem 'pry-byebug', group: :development
 
 gem 'devise'
+
