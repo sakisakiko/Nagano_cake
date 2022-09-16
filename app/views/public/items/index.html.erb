@@ -1,12 +1,12 @@
 <div class="container">
 
 <div="row mx-auto">
-<h2 class="col-7 font-weight-bold"style="margin-left:130px;">
+<h4 class="col-7 font-weight-bold"style="margin-left:90px;">
 商品一覧<span>(全<%=@items.count%>件)</span>
-</h2>
+</h4>
 </div>
 
-<div class="col-7 d-flex flex-row flex-wrap mx-auto">
+<div class="col-8 d-flex flex-row flex-wrap mx-auto">
 <% @items.each do |item| %>
 <div class="flex-column flex-wrap ">
   <%=link_to item_path(item.id) do %><%=image_tag item.get_image(150,300),class: "mr-5"%><% end %>
@@ -16,8 +16,10 @@
 <% end %>
 </div>
 
-<div class="col-7 mx-auto">
+<div class="row mx-auto">
+  <div class="col-lg-2 mx-auto">
 <%= paginate @items%>
+  </div>
 </div>
 
 
