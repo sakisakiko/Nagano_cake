@@ -1,7 +1,14 @@
-<h4>商品詳細</h4>
+<div class="container">
 
-<table>
-<%=image_tag @item.get_image(100,100) %>
+<h4 class="font-weight-bold mb-3">商品詳細</h4>
+
+<div class="row">
+
+<div class="col-lg-3">
+<%=image_tag @item.get_image(200,350) %>
+</div>
+
+<table class="table table-borderless table-sm col-lg-6 ">
   <tr>
     <td>商品名</td>
     <td><%=@item.name %></td>
@@ -18,14 +25,29 @@
   </tr>
 
   <tr>
-    <td>税込価格</br>（税抜価格）</td>
+    <td>税込価格</br>(税抜価格)</td>
     <td><%= @item.with_tax_price.to_s(:dalimited) %> (<%=@item.price %>)円</td>
     </tr>
 
   <tr>
     <td>販売ステータス</td>
-    <td><%= @item.is_active == true ? "販売中":"販売停止中" %> </td>
+    <td><% if @item.is_active == true %>
+      　　<span class="text-success font-weight-bold">販売中</span>
+        <% else %>
+        　<span class="font-weight-bold" style="color:#DDDDDD;">販売停止中</span>
+        <% end %>
+    </td>
   </tr>
 </table>
+</div>
 
-<%=link_to edit_admin_item_path(@item.id) do %>編集する<% end %>
+<div class="row mx-auto">
+  <div class="col-lg-4"></div>
+  <%=link_to "編集する",edit_admin_item_path(@item.id),class: "col-lg-2 btn btn-success"%>
+</div>
+
+
+
+
+
+</div>
