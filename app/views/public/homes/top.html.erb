@@ -1,12 +1,13 @@
 <div class="container">
 
-
-
-
 <div class="row">
+  
+<%=render'list',genres: @genres %><!--部分テンプレート-->
 
-<div class=col-lg-3>
+
+<div class=col-lg-1>
 </div>
+
 
 <div class=col-lg-7>
 
@@ -44,9 +45,9 @@
 
 </div><!--rowのdiv-->
 
-<div class="row">
-<div class="col-lg-3"></div>
-<div class=" col-lg-7 text-right">
+<div class="row mx-auto">
+
+<div class=" col-lg-10 text-right">
 <%=link_to "全ての商品を見る>", items_path %>
 </div>
 </div>

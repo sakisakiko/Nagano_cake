@@ -1,6 +1,9 @@
 <div class="container">
 <div class="row mx-auto">
 
+ <%=render'public/homes/list',genres: @genres %><!--部分テンプレート-->
+
+
 <div class="col-lg-3">
 <%=image_tag @item.get_image(200,350) %>
 </div>
