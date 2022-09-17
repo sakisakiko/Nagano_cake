@@ -57,7 +57,11 @@
 </div>
 
 <div class="row mx-auto">
-<%=link_to "情報入力画面に進む",new_order_path,class: "btn btn-success col-lg-3 mx-auto" %>
+<% if @cart_items.present? %>
+  <%=link_to "情報入力画面に進む",new_order_path,class: "btn btn-success col-lg-3 mx-auto" %>
+<% else %>
+  <%=link_to "情報入力画面に進む",cart_items_path,class: "btn btn-success col-lg-3 mx-auto" %>
+<% end %>
 </div>
 
 
