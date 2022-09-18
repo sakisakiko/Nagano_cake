@@ -36,5 +36,4 @@ class Public::AddressesController < ApplicationController
   end
 
 
-
 end

@@ -1,57 +1,48 @@
 <div class="container">
 
-<div class="row">
+  <div class="row">
 
-<%=render'list',genres: @genres %><!--部分テンプレート-->
+    <%=render'list',genres: @genres %><!--部分テンプレート-->
 
+    <div class=col-lg-1>
+    </div>
 
-<div class=col-lg-1>
-</div>
+    <div class=col-lg-7>
+      <div class="card mx-auto" style="max-width: 700px;">
+        <img class="card-img width="100%" height="300"" style="opacity:0.75;" src="/assets/eclair1.jpg" alt="">
+        <div class="card-img-overlay">
+          <div class="d-flex align-items-center justify-content-center" style="height:300px;">
+            <p style="background-color:rgba(255,255,255,0.75);">
+            ようこそ、ながのCAKEへ！</br>
+            このサイトは、ケーキ販売のECサイトになります。</br>
+            会員でない方も商品の閲覧はできますが、</br>
+            購入には会員登録が必要になります
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  </div>
 
-<div class=col-lg-7>
+  <div="row">
+    <h4 class=" font-weight-bold col-lg-7" style="margin-left:190px;" >新着商品</h4>
+  </div>
 
-<div class="card mx-auto" style="max-width: 700px;">
-<img class="card-img width="100%" height="300"" style="opacity:0.75;" src="/assets/eclair1.jpg" alt="">
-<div class="card-img-overlay">
-<div class="d-flex align-items-center justify-content-center" style="height:300px;">
-<p style="background-color:rgba(255,255,255,0.75);">
-ようこそ、ながのCAKEへ！</br>
-このサイトは、ケーキ販売のECサイトになります。</br>
-会員でない方も商品の閲覧はできますが、</br>
-購入には会員登録が必要になります
-</p>
-</div>
-</div>
-</div>
+  <div="row mx-auto">
+    <div class="col-lg-7 d-flex flex-row mx-auto">
+    <% @items.limit(4).each do |item| %>
+      <div class="flex-column"><%=link_to item_path(item.id) do %><%=image_tag item.get_image(150,350),class: "ml-5"%><% end %>
+        <p class= "ml-5"><%=link_to item_path(item.id) do %><%=item.name %><% end %></br>¥<%=item.price %></p>
+      </div>
+    <% end %>
+    </div>
+  </div>
 
-</div><!--col-lg-7のdiv-->
-</div><!--rowのdiv-->
-
-<div="row">
-<h4 class=" font-weight-bold col-lg-7" style="margin-left:190px;" >新着商品</h4>
-</div>
-
-<div="row mx-auto">
-<div class="col-lg-7 d-flex flex-row mx-auto">
-<% @items.limit(4).each do |item| %>
-<div class="flex-column"><%=link_to item_path(item.id) do %><%=image_tag item.get_image(150,350),class: "ml-5"%><% end %>
-<p class= "ml-5"><%=link_to item_path(item.id) do %><%=item.name %><% end %></br>¥<%=item.price %></p>
-</div>
-<% end %>
-</div>
-</div>
-</div>
-
-</div><!--rowのdiv-->
-
-<div class="row mx-auto">
-
-<div class=" col-lg-10 text-right">
-<%=link_to "全ての商品を見る>", items_path %>
-</div>
-</div>
-
-
+  <div class="row mx-auto">
+    <div class=" col-lg-10 text-right">
+      <%=link_to "全ての商品を見る>", items_path %>
+    </div>
+  </div>
 
 </div>

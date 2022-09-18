@@ -1,28 +1,28 @@
 <div class="container ">
+  <div style="margin-top:100px;">
 
-<div style="margin-top:100px;">
-<div class="row mx-auto">
-<div class="mx-auto col-lg-6 ">
-<h4 class="text-center mb-3 font-weight-bold">本当に退会しますか？</h4>
-</div>
-</div>
+    <div class="row mx-auto">
+      <div class="mx-auto col-lg-6 ">
+        <h4 class="text-center mb-3 font-weight-bold">本当に退会しますか？</h4>
+      </div>
+    </div>
 
-<div class="row mx-auto">
-<div class="mx-auto col-lg-6 ">
-<p class="text-center">退会すると、会員登録情報や</br>
-これまでの購入履歴が閲覧できなくなります。</br>
-退会する場合は、「退会する」をクリックしてください。</p>
-</div>
-</div>
+    <div class="row mx-auto">
+      <div class="mx-auto col-lg-6 ">
+        <p class="text-center">退会すると、会員登録情報や</br>
+        これまでの購入履歴が閲覧できなくなります。</br>
+        退会する場合は、「退会する」をクリックしてください。</p>
+      </div>
+    </div>
 
-<div class="row mx-auto">
-<div class="mx-auto">
-<%=form_with model: @customer,url: withdraw_path,method: :patch do |f| %>
-<%=link_to "退会しない", my_page_path,class: "btn btn-primary mx-auto" %>
-<%=f.submit " 退会する ",class: " btn btn-danger mx-auto"%>
-<% end %>
-</div>
-</div>
-</div>
+    <div class="row mx-auto">
+      <div class="mx-auto">
+        <%=form_with model: @customer,url: withdraw_path,method: :patch do |f| %>
+        <%=link_to "退会しない", my_page_path,class: "btn btn-primary mx-auto" %>
+        <%=f.submit " 退会する ",class: " btn btn-danger mx-auto"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 </div>

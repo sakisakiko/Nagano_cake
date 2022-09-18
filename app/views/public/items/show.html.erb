@@ -1,37 +1,30 @@
 <div class="container">
-<div class="row mx-auto">
+  <div class="row mx-auto">
 
- <%=render'public/homes/list',genres: @genres %><!--部分テンプレート-->
+    <%=render'public/homes/list',genres: @genres %><!--部分テンプレート-->
 
+    <div class="col-lg-3">
+      <%=image_tag @item.get_image(200,350) %>
+    </div>
 
-<div class="col-lg-3">
-<%=image_tag @item.get_image(200,350) %>
-</div>
+    <div class="col-lg-5">
+      <h5 class="font-weight-bold mb-0"><%=@item.name%></h5></br>
+      <p><%=@item.introduction%></p>
+      <p>
+      ¥<span class="font-weight-bold " style="font-size:17px;" ><%= @item.with_tax_price.to_s(:dalimited) %></span>(税込)
+      </p>
 
-<div class="col-lg-5">
-<h5 class="font-weight-bold mb-0"><%=@item.name%></h5></br>
-<p><%=@item.introduction%></p>
-<p>
-¥<span class="font-weight-bold " style="font-size:17px;" ><%= @item.with_tax_price.to_s(:dalimited) %></span>(税込)
-</p>
-
-<% if @item.is_active == true %>
- <%=form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
-
-  <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-
-  <%= f.hidden_field :item_id, :value => @item.id %>
-
-  <%=f.submit "カートに入れる",class: "btn btn-success ml-5 " %>
- <% end %>
-<% else %>
-<p>申し訳ございません。</br>こちらの商品は只今ご注文できません。</p>
-<% end %>
-
-</div>
-
-
-</div>
+      <% if @item.is_active == true %>
+       <%=form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
+        <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%=f.submit "カートに入れる",class: "btn btn-success ml-5 " %>
+       <% end %>
+      <% else %>
+        <p>申し訳ございません。</br>こちらの商品は只今ご注文できません。</p>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
