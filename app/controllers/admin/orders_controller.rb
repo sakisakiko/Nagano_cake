@@ -5,20 +5,16 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-     @order=Order.find(params[:id])
+    @order=Order.find(params[:id])
 
-  if @order.update(status: 1)
-     @order.order_details.update_all(status: 1)
-     redirect_to admin_order_path(@order.id)
-  elsif@order.order_details.update(status: 2)
-       @order.update(status: 2)
-       redirect_to admin_order_path(@order.id)
-  elsif@order.order_details.update_all(status: 3)
-       @order.update(status: 4)
-       redirect_to admin_or
-  else
-    @order.update(order_params)
-   end
+  if @order.update(order_params)
+    if params[:order][:status]=="deposited"#注文ステータスを「入金確認」に更新→制作ステータスが全て「制作待ち」に
+      @order.order_details.update_all(status: 1)
+      redirect_to admin_order_path(@order.id)
+    else
+      redirect_to admin_order_path(@order.id)
+    end
+  end
   end
 
 

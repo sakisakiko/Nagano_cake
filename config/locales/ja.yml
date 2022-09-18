@@ -13,7 +13,7 @@ ja:
     order_detail:
       status:
         untouched: "着手不可"
-        preparation: "制作待ち"
+        preparation: "製作待ち"
         making: "製作中"
         completed: "製作完了"
 
