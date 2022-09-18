@@ -7,7 +7,8 @@
 <table class="table table-borderless table-sm ">
   <tr>
     <td>購入者</td>
-    <td><%=@order.customer.last_name %><%=@order.customer.first_name %></td>
+    <td><%=link_to admin_customer_path(@order.customer.id) do %>
+    <%=@order.customer.last_name %><%=@order.customer.first_name %><% end %></td>
   </tr>
 
   <tr>
