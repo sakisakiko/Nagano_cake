@@ -28,6 +28,7 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_item_path(@item.id)
   end
 
+
   private
 
   def item_params

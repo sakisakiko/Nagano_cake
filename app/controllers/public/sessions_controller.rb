@@ -3,7 +3,9 @@
 class Public::SessionsController < Devise::SessionsController
   # ↓ログイン処理（create)が行われる前に処理をする
   before_action :customer_state, only: [:create]
-  # before_action :configure_sign_in_params, only: [:create]
+
+ # before_action :configure_sign_in_params, only: [:create]
+
 
   # GET /resource/sign_in
   # def new

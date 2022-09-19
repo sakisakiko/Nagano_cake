@@ -19,7 +19,7 @@
       <div class="mx-auto">
         <%=form_with model: @customer,url: withdraw_path,method: :patch do |f| %>
         <%=link_to "退会しない", my_page_path,class: "btn btn-primary mx-auto" %>
-        <%=f.submit " 退会する ",class: " btn btn-danger mx-auto"%>
+        <%=f.submit " 退会する ","data-confirm" => "退会します。よろしいですか？",class: " btn btn-danger mx-auto"%>
         <% end %>
       </div>
     </div>

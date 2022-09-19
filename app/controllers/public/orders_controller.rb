@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order=Order.new
+    @addresses=current_customer.addresses
   end
 
 
@@ -58,7 +59,6 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order=current_customer.orders.find(params[:id])
-    #@order_details=current_customer.orders_deitals
     @order.shipping_cost= 800
     @total_price=0
   end

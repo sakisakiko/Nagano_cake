@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
        post '/orders/confirm'=>'orders#confirm',as: 'confirm'
        get '/orders/complete'=>'orders#complete',as: 'complete'
-       resources:orders,only:[:create,:new,:index,:show] 
-   
+       resources:orders,only:[:create,:new,:index,:show]
+
 
 
        resources:addresses,only:[:index,:edit,:create,:update,:destroy]
