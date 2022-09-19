@@ -23,7 +23,7 @@
                 <% order.order_details.each do |order_detail| %>
                   <% @total_amount += order_detail.amount %><!--※注文個数の計算式-->
                 <% end %>
-                  <%=@total_amount%><!--注文個数-->
+                <%=@total_amount%><!--注文個数-->
               </td>
               <td><%=order.status_i18n%></td><!--注文ステータス-->
             </tr>
