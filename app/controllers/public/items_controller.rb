@@ -1,7 +1,8 @@
 class Public::ItemsController < ApplicationController
-  
+
   def index
     @items = Item.page(params[:page]).per(8)
+    @item_amount=Item.count
     @genres=Genre.all
   end
 
@@ -13,7 +14,7 @@ class Public::ItemsController < ApplicationController
 
 
   private
-  
+
   def item_params
     params.require(:item).permit(:image,:genre_id,:name,:introduction,:price,:is_active)
   end
