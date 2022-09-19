@@ -1,6 +1,6 @@
 <div class="container">
   <h4 class="font-weight-bold mb-3">ジャンル編集</h4>
-  
+
   <%= form_with model:@genre, url:admin_genre_path, method: :PATCH  do |f| %>
     <div class="form-group row mx-auto">
       <%= f.label :ジャンル名,class: "col-lg-2" %>
@@ -8,4 +8,5 @@
       <%=f.submit "変更を保存",class: "col-lg-2 btn btn-success ml-5" %>
     </div>
   <% end %>
+
 </div>

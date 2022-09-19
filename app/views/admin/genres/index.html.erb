@@ -1,7 +1,7 @@
 <div class="container">
 
   <h4 class="font-weight-bold mb-3">ジャンル一覧・追加</h4>
-  
+
   <%= form_with model: @genre, url:admin_genres_path, method: :POST do |f| %>
     <div class="form-group row mx-auto">
       <%= f.label :ジャンル名,class: "col-lg-2" %>
@@ -9,7 +9,7 @@
       <%=f.submit "新規登録",class: "col-lg-2 btn btn-success ml-5" %>
     </div>
   <% end %>
-  
+
   <table class="table col-lg-4 mt-5">
     <thead>
       <tr>
